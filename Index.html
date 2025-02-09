@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorritas Virales - Cachuchas Urbanas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos base */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra superior de redes sociales */
+        .social-top-bar {
+            background-color: #ff6f20;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons i {
+            font-size: 18px;
+        }
+
+        /* Banner */
+    #inicio {
+    position: relative;
+    background: url('https://cdn0.uncomo.com/es/posts/1/9/5/las_marcas_de_gorras_mas_famosas_para_llevar_este_verano_54591_orig.jpg') no-repeat center center/cover;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.logo-container {
+    position: absolute;
+    top: 30px; /* Ajusta la posición vertical */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.logo {
+    width: 150px; /* Ajuste para que el logo no sea tan grande */
+    height: auto; /* Mantiene la proporción */
+    max-width: 100%;
+}
+
+.banner-text {
+    color: white;
+    z-index: 5;
+    margin-top: 180px; /* Asegura que el texto no se superponga al logo */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #e64a19;
+}
+
+
+        /* Badges de características */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .feature-badge {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-badge i {
+            font-size: 24px;
+            color: #ff6f20;
+            margin-bottom: 10px;
+        }
+
+        .feature-badge h3 {
+            font-size: 16px;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Grid y Cards */
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        #productos {
+            padding: 0 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: bold;
+            color: #333;
+        }
+        .categoria-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 3/4;
+        }
+
+        .categoria-titulo {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        /* Carrusel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: auto;
+            height: calc(100% - 60px);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        /* Sección Nosotros */
+        .nosotros {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nosotros h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.brand-message {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ff5722;
+}
+
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #ff5722;
+    text-decoration: underline;
+}
+
+.footer-copy {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .banner-text h1 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categoria-titulo {
+        font-size: 1.4em;
+    }
+
+    .banner-text h1 {
+        font-size: 24px;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .categorias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categoria-card {
+        aspect-ratio: 2/3;
+    }
+
+    .categoria-titulo {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .banner {
+        padding: 30px 15px;
+    }
+
+    .banner-text h1 {
+        font-size: 20px;
+    }
+
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    header .logo img {
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .features {
+        grid-template-columns: 1fr; /* 1 columna en vez de 4 */
+        gap: 10px;
+    }
+
+    .feature-badge {
+        padding: 15px; /* Reducir padding para mayor espacio */
+    }
+
+    .feature-badge i {
+        font-size: 20px; /* Ajustar tamaño de los íconos */
+    }
+
+    .feature-badge h3 {
+        font-size: 16px; /* Ajustar tamaño del texto */
+    }
+}
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- Barra superior de redes sociales -->
+    <div class="social-top-bar">
+        <div class="social-icons">
+            <a href="https://facebook.com/gorritasvirales" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="https://instagram.com/gorritasvirales" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://wa.me/+52TUNUMERO" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+    
+    <section id="inicio" class="banner">
+        <div class="logo-container">
+            <img src="GV2.png" alt="Gorritas Virales Logo" class="logo" />
+        </div>
+        <div class="banner-text">
+            <h1>¡Las mejores cachuchas urbanas, 100% mexicanas!</h1>
+            <p>Envío gratuito y entrega en 4 días o menos. ¡Compra ahora!</p>
+            <a href="#productos" class="cta-button">Ver Diseños</a>
+        </div>
+    </section>
+    
+
+    <!-- Badges de características -->
+    <div class="features">
+        <div class="feature-badge">
+            <i class="fas fa-truck"></i>
+            <h3>Envío Gratis</h3>
+        </div>
+        <div class="feature-badge">
+            <i class="fas fa-clock"></i>
+            <h3>Entrega en 4 días</h3>
+        </div>
+        <div class="feature-badge">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Calidad Garantizada</h3>
+        </div>
+        <div class="feature-badge">
+            <i class="fas fa-medal"></i>
+            <h3>Varias Formas de Pago</h3>
+        </div>
+    </div>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="nosotros">
+        <h2>Sobre las Gorritas Virales</h2>
+        <p>Somos una distribuidora mexicana dedicada a ofrecer las mejores cachuchas urbanas. Con envíos rápidos y gratuitos, ofrecemos productos de alta calidad para todo público.</p>
+    </section>
+
+    <section id="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="categorias-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p class="brand-message">🔥 Eleva tu estilo con Gorritas Virales 🔥</p>
+            <div class="footer-links">
+                <a href="Legal.html">Términos y Condiciones</a>
+                <a href="Legal.html">Política de Privacidad</a>
+                <a href="Legal.html">Preguntas Frecuentes</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 Gorritas Virales. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Función para crear el carrusel automático
+        function createCarousel(images, containerId) {
+            let currentIndex = 0;
+            const container = document.getElementById(containerId);
+            const imagesDiv = container.querySelector('.carousel-images');
+
+            // Función para cambiar la imagen
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                imagesDiv.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            // Iniciar el carrusel automático
+            setInterval(showNextImage, 3000);
+        }
+
+        // Cargar el archivo JSON con las carpetas e imágenes
+        fetch('src/imagenes.json')
+            .then(response => response.json())
+            .then(data => {
+                const categoriasGrid = document.querySelector('.categorias-grid');
+                let carouselId = 0;
+
+                // Crear una tarjeta para cada categoría
+                for (const folder in data) {
+                    const categoriaCard = document.createElement('div');
+                    categoriaCard.classList.add('categoria-card');
+
+                    const titulo = document.createElement('h3');
+                    titulo.classList.add('categoria-titulo');
+                    titulo.textContent = folder;
+
+                    const carouselContainer = document.createElement('div');
+                    carouselContainer.classList.add('carousel-container');
+                    carouselContainer.id = `carousel-${carouselId}`;
+
+                    const carouselImages = document.createElement('div');
+                    carouselImages.classList.add('carousel-images');
+
+                    // Agregar imágenes al carrusel
+                    data[folder].forEach(image => {
+                        const img = document.createElement('img');
+                        img.src = 'src/' + folder + '/' + image;
+                        img.alt = folder;
+                        carouselImages.appendChild(img);
+                    });
+
+                    carouselContainer.appendChild(carouselImages);
+                    categoriaCard.appendChild(titulo);
+                    categoriaCard.appendChild(carouselContainer);
+                    categoriasGrid.appendChild(categoriaCard);
+
+                    // Iniciar el carrusel para esta categoría
+                    createCarousel(data[folder], `carousel-${carouselId}`);
+                    carouselId++;
+                }
+            })
+            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    </script>
+</body>
+</html>
