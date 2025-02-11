@@ -201,7 +201,8 @@
             flex-shrink: 0;
         }
 
-        .modal-gallery {
+/* Estilos básicos para el modal */
+.modal-gallery {
     display: none; /* Inicialmente oculto */
     position: fixed;
     top: 0;
@@ -225,12 +226,15 @@
     border-radius: 12px; /* Bordes redondeados al estilo iOS */
 }
 
-/* Imagen de la galería */
+/* Imagen de la galería sin borde */
 .modal-image {
     width: 100%;
     height: auto;
+    border: none;
+    display: block;
+    object-fit: contain;
+    max-height: 80vh; /* Limitar la altura máxima */
 }
-
 /* Estilo de la navegación */
 .nav-button {
     background-color: transparent;
@@ -274,7 +278,6 @@
 .close-modal:hover {
     background-color: rgba(255, 255, 255, 0.3); /* Efecto de hover al estilo iOS */
 }
-
 
         /* Sección Nosotros */
         .nosotros {
@@ -333,6 +336,7 @@
             opacity: 0.7;
         }
 
+        
 /* Para pantallas de hasta 1200px */
 @media screen and (max-width: 1200px) {
     .categorias-grid {
@@ -346,7 +350,7 @@
     }
 
     .modal-content {
-        width: 80%;
+        width: 85%;
         max-width: 600px;
         position: fixed;
         top: 50%;
@@ -379,7 +383,7 @@
     }
 
     .modal-content {
-        width: 80%;
+        width: 85%;
         max-width: 600px;
         position: fixed;
         top: 50%;
@@ -395,7 +399,7 @@
 /* Para pantallas de hasta 853px */
 @media screen and (max-width: 853px) {
     .modal-content {
-        width: 85%;
+        width: 90%;
         max-width: 550px;
         position: fixed;
         top: 50%;
@@ -466,23 +470,6 @@
 
 /* Para pantallas de hasta 430px */
 @media screen and (max-width: 430px) {
-    .features {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .feature-badge {
-        padding: 15px;
-    }
-
-    .feature-badge i {
-        font-size: 20px;
-    }
-
-    .feature-badge h3 {
-        font-size: 16px;
-    }
-
     .modal-content {
         width: 95%;
         max-width: 360px;
@@ -587,7 +574,6 @@
             </button>
             <div class="image-counter">1 / 1</div>
         </div>
-        <button class="modal-close-button">X</button> <!-- Botón de cierre visible en dispositivos móviles -->
     </div>
 
 
@@ -630,7 +616,6 @@ const closeButton = modal.querySelector('.close-modal');
 const prevButton = modal.querySelector('.prev-button');
 const nextButton = modal.querySelector('.next-button');
 const imageCounter = modal.querySelector('.image-counter');
-const mobileCloseButton = modal.querySelector('.modal-close-button'); // Botón de cierre móvil
 
 // Función para abrir la galería
 function openGallery(images, startIndex = 0) {
@@ -659,11 +644,6 @@ nextButton.addEventListener('click', () => {
 
 // Cerrar el modal con el botón de cierre (X)
 closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-// Cerrar el modal con el botón de cierre móvil
-mobileCloseButton.addEventListener('click', () => {
     modal.style.display = 'none';
 });
 
