@@ -201,81 +201,80 @@
             flex-shrink: 0;
         }
 
-        /* Modal de Galería */
         .modal-gallery {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            padding: 20px;
-        }
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    z-index: 9999; /* Para que esté sobre otros elementos */
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-content {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.modal-content {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 12px; /* Bordes redondeados al estilo iOS */
+}
 
-        .modal-image {
-            max-width: 90%;
-            max-height: 80vh;
-            object-fit: contain;
-        }
+/* Imagen de la galería */
+.modal-image {
+    width: 100%;
+    height: auto;
+}
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 1001;
-        }
+/* Estilo de la navegación */
+.nav-button {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 15px;
-            cursor: pointer;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            transition: background-color 0.3s;
-        }
+.prev-button {
+    left: 10px;
+}
 
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+.next-button {
+    right: 10px;
+}
 
-        .prev-button {
-            left: 20px;
-        }
+/* Contador de la imagen */
+.image-counter {
+    margin-top: 10px;
+}
 
-        .next-button {
-            right: 20px;
-        }
+/* Botón de cierre en la esquina superior derecha (estilo iOS) */
+.close-modal {
+    font-size: 36px;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%; /* Círculo para un diseño más limpio */
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
 
-        .image-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 16px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
-            border-radius: 15px;
-        }
+.close-modal:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Efecto de hover al estilo iOS */
+}
+
 
         /* Sección Nosotros */
         .nosotros {
@@ -334,7 +333,7 @@
             opacity: 0.7;
         }
 
-/* Media Queries */
+/* Para pantallas de hasta 1200px */
 @media screen and (max-width: 1200px) {
     .categorias-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -345,8 +344,22 @@
     .banner-text h1 {
         font-size: 28px;
     }
+
+    .modal-content {
+        width: 80%;
+        max-width: 600px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .modal-close-button {
+        font-size: 32px; /* Tamaño del botón de cierre */
+    }
 }
 
+/* Para pantallas de hasta 992px */
 @media screen and (max-width: 992px) {
     .categorias-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -373,8 +386,13 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    .modal-close-button {
+        font-size: 28px; /* Tamaño del botón de cierre */
+    }
 }
 
+/* Para pantallas de hasta 853px */
 @media screen and (max-width: 853px) {
     .modal-content {
         width: 85%;
@@ -388,8 +406,13 @@
     .modal-image {
         max-height: 75vh;
     }
+
+    .modal-close-button {
+        font-size: 26px; /* Tamaño del botón de cierre */
+    }
 }
 
+/* Para pantallas de hasta 576px */
 @media screen and (max-width: 576px) {
     .categorias-grid {
         grid-template-columns: 1fr;
@@ -435,8 +458,13 @@
     .nav-button {
         padding: 8px;
     }
+
+    .modal-close-button {
+        font-size: 24px; /* Tamaño del botón de cierre */
+    }
 }
 
+/* Para pantallas de hasta 430px */
 @media screen and (max-width: 430px) {
     .features {
         grid-template-columns: 1fr;
@@ -479,8 +507,11 @@
     .image-counter {
         font-size: 14px;
     }
-}
 
+    .modal-close-button {
+        font-size: 20px; /* Tamaño del botón de cierre */
+    }
+}
     </style>
 </head>
 <body>
@@ -556,7 +587,9 @@
             </button>
             <div class="image-counter">1 / 1</div>
         </div>
+        <button class="modal-close-button">X</button> <!-- Botón de cierre visible en dispositivos móviles -->
     </div>
+
 
     <!-- Footer -->
     <footer>
@@ -589,104 +622,122 @@
         }
     
         // Variables para la galería modal
-        let currentGalleryIndex = 0;
-        let currentGalleryImages = [];
-        const modal = document.getElementById('imageModal');
-        const modalImage = modal.querySelector('.modal-image');
-        const closeButton = modal.querySelector('.close-modal');
-        const prevButton = modal.querySelector('.prev-button');
-        const nextButton = modal.querySelector('.next-button');
-        const imageCounter = modal.querySelector('.image-counter');
-    
-        // Función para abrir la galería
-        function openGallery(images, startIndex = 0) {
-            currentGalleryImages = images;
-            currentGalleryIndex = startIndex;
-            modal.style.display = 'block';
-            updateGalleryImage();
+let currentGalleryIndex = 0;
+let currentGalleryImages = [];
+const modal = document.getElementById('imageModal');
+const modalImage = modal.querySelector('.modal-image');
+const closeButton = modal.querySelector('.close-modal');
+const prevButton = modal.querySelector('.prev-button');
+const nextButton = modal.querySelector('.next-button');
+const imageCounter = modal.querySelector('.image-counter');
+const mobileCloseButton = modal.querySelector('.modal-close-button'); // Botón de cierre móvil
+
+// Función para abrir la galería
+function openGallery(images, startIndex = 0) {
+    currentGalleryImages = images;
+    currentGalleryIndex = startIndex;
+    modal.style.display = 'flex';
+    updateGalleryImage();
+}
+
+// Función para actualizar la imagen mostrada
+function updateGalleryImage() {
+    modalImage.src = currentGalleryImages[currentGalleryIndex];
+    imageCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+}
+
+// Eventos para los botones de navegación
+prevButton.addEventListener('click', () => {
+    currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+    updateGalleryImage();
+});
+
+nextButton.addEventListener('click', () => {
+    currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+    updateGalleryImage();
+});
+
+// Cerrar el modal con el botón de cierre (X)
+closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Cerrar el modal con el botón de cierre móvil
+mobileCloseButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Cerrar con la tecla Escape
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        modal.style.display = 'none';
+    } else if (e.key === 'ArrowLeft') {
+        prevButton.click();
+    } else if (e.key === 'ArrowRight') {
+        nextButton.click();
+    }
+});
+
+// Cerrar la galería al hacer clic fuera de la imagen (en escritorio)
+modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Evitar que el modal se cierre si se hace clic en la imagen
+modalImage.addEventListener('click', (event) => {
+    event.stopPropagation(); // Previene que el clic cierre el modal
+});
+
+// Aquí puedes cargar las imágenes desde tu JSON o base de datos
+fetch('src/imagenes.json')
+    .then(response => response.json())
+    .then(data => {
+        const categoriasGrid = document.querySelector('.categorias-grid');
+        let carouselId = 0;
+
+        for (const folder in data) {
+            const categoriaCard = document.createElement('div');
+            categoriaCard.classList.add('categoria-card');
+
+            const titulo = document.createElement('h3');
+            titulo.classList.add('categoria-titulo');
+            titulo.textContent = folder;
+
+            const carouselContainer = document.createElement('div');
+            carouselContainer.classList.add('carousel-container');
+            carouselContainer.id = `carousel-${carouselId}`;
+
+            const carouselImages = document.createElement('div');
+            carouselImages.classList.add('carousel-images');
+
+            // Crear array de rutas de imágenes completas
+            const fullImagePaths = data[folder].map(image => 'src/' + folder + '/' + image);
+
+            // Agregar imágenes al carrusel
+            fullImagePaths.forEach(imagePath => {
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = folder;
+                carouselImages.appendChild(img);
+            });
+
+            // Agregar evento click a la tarjeta
+            categoriaCard.addEventListener('click', () => {
+                openGallery(fullImagePaths);
+            });
+
+            carouselContainer.appendChild(carouselImages);
+            categoriaCard.appendChild(titulo);
+            categoriaCard.appendChild(carouselContainer);
+            categoriasGrid.appendChild(categoriaCard);
+
+            createCarousel(data[folder], `carousel-${carouselId}`);
+            carouselId++;
         }
-    
-        // Función para actualizar la imagen mostrada
-        function updateGalleryImage() {
-            modalImage.src = currentGalleryImages[currentGalleryIndex];
-            imageCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
-        }
-    
-        // Eventos para los botones de navegación
-        prevButton.addEventListener('click', () => {
-            currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-            updateGalleryImage();
-        });
-    
-        nextButton.addEventListener('click', () => {
-            currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
-            updateGalleryImage();
-        });
-    
-        // Cerrar el modal
-        closeButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    
-        // Cerrar con la tecla Escape
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                modal.style.display = 'none';
-            } else if (e.key === 'ArrowLeft') {
-                prevButton.click();
-            } else if (e.key === 'ArrowRight') {
-                nextButton.click();
-            }
-        });
-    
-        // Cargar el archivo JSON con las carpetas e imágenes
-        fetch('src/imagenes.json')
-            .then(response => response.json())
-            .then(data => {
-                const categoriasGrid = document.querySelector('.categorias-grid');
-                let carouselId = 0;
-    
-                for (const folder in data) {
-                    const categoriaCard = document.createElement('div');
-                    categoriaCard.classList.add('categoria-card');
-    
-                    const titulo = document.createElement('h3');
-                    titulo.classList.add('categoria-titulo');
-                    titulo.textContent = folder;
-    
-                    const carouselContainer = document.createElement('div');
-                    carouselContainer.classList.add('carousel-container');
-                    carouselContainer.id = `carousel-${carouselId}`;
-    
-                    const carouselImages = document.createElement('div');
-                    carouselImages.classList.add('carousel-images');
-    
-                    // Crear array de rutas de imágenes completas
-                    const fullImagePaths = data[folder].map(image => 'src/' + folder + '/' + image);
-    
-                    // Agregar imágenes al carrusel
-                    fullImagePaths.forEach(imagePath => {
-                        const img = document.createElement('img');
-                        img.src = imagePath;
-                        img.alt = folder;
-                        carouselImages.appendChild(img);
-                    });
-    
-                    // Agregar evento click a la tarjeta
-                    categoriaCard.addEventListener('click', () => {
-                        openGallery(fullImagePaths);
-                    });
-    
-                    carouselContainer.appendChild(carouselImages);
-                    categoriaCard.appendChild(titulo);
-                    categoriaCard.appendChild(carouselContainer);
-                    categoriasGrid.appendChild(categoriaCard);
-    
-                    createCarousel(data[folder], `carousel-${carouselId}`);
-                    carouselId++;
-                }
-            })
-            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    })
+    .catch(error => console.error('Error al cargar el archivo JSON:', error));
     </script>
 </body>
 </html>
