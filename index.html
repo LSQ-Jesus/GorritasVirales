@@ -49,56 +49,55 @@
         }
 
         /* Banner */
-    #inicio {
-    position: relative;
-    background: url('https://cdn0.uncomo.com/es/posts/1/9/5/las_marcas_de_gorras_mas_famosas_para_llevar_este_verano_54591_orig.jpg') no-repeat center center/cover;
-    text-align: center;
-    padding: 100px 20px;
-}
+        #inicio {
+            position: relative;
+            background: url('https://cdn0.uncomo.com/es/posts/1/9/5/las_marcas_de_gorras_mas_famosas_para_llevar_este_verano_54591_orig.jpg') no-repeat center center/cover;
+            text-align: center;
+            padding: 100px 20px;
+        }
 
-.logo-container {
-    position: absolute;
-    top: 30px; /* Ajusta la posición vertical */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
 
-.logo {
-    width: 150px; /* Ajuste para que el logo no sea tan grande */
-    height: auto; /* Mantiene la proporción */
-    max-width: 100%;
-}
+        .logo {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+        }
 
-.banner-text {
-    color: white;
-    z-index: 5;
-    margin-top: 180px; /* Asegura que el texto no se superponga al logo */
-}
+        .banner-text {
+            color: white;
+            z-index: 5;
+            margin-top: 180px;
+        }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-}
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
 
-p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
 
-.cta-button {
-    padding: 10px 20px;
-    background-color: #ff5722;
-    color: white;
-    font-size: 1.2em;
-    text-decoration: none;
-    border-radius: 5px;
-}
+        .cta-button {
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-.cta-button:hover {
-    background-color: #e64a19;
-}
-
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
 
         /* Badges de características */
         .features {
@@ -140,7 +139,7 @@ p {
             max-width: 1600px;
             margin: 0 auto;
         }
-        
+
         #productos {
             padding: 0 15px;
         }
@@ -152,6 +151,7 @@ p {
             font-weight: bold;
             color: #333;
         }
+
         .categoria-card {
             background: white;
             border-radius: 20px;
@@ -161,6 +161,12 @@ p {
             display: flex;
             flex-direction: column;
             aspect-ratio: 3/4;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .categoria-card:hover {
+            transform: translateY(-5px);
         }
 
         .categoria-titulo {
@@ -170,7 +176,7 @@ p {
             font-size: 1.5em;
             font-weight: bold;
         }
-        
+
         /* Carrusel */
         .carousel-container {
             position: relative;
@@ -195,6 +201,82 @@ p {
             flex-shrink: 0;
         }
 
+        /* Modal de Galería */
+        .modal-gallery {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev-button {
+            left: 20px;
+        }
+
+        .next-button {
+            right: 20px;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 15px;
+        }
+
         /* Sección Nosotros */
         .nosotros {
             text-align: center;
@@ -211,47 +293,46 @@ p {
 
         /* Footer */
         footer {
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
-    font-size: 14px;
-}
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+        }
 
-.footer-container {
-    max-width: 900px;
-    margin: auto;
-}
+        .footer-container {
+            max-width: 900px;
+            margin: auto;
+        }
 
-.brand-message {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ff5722;
-}
+        .brand-message {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff5722;
+        }
 
-.footer-links {
-    margin-bottom: 15px;
-}
+        .footer-links {
+            margin-bottom: 15px;
+        }
 
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-    display: inline-block;
-}
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            display: inline-block;
+        }
 
-.footer-links a:hover {
-    color: #ff5722;
-    text-decoration: underline;
-}
+        .footer-links a:hover {
+            color: #ff5722;
+            text-decoration: underline;
+        }
 
-.footer-copy {
-    font-size: 12px;
-    opacity: 0.7;
-}
-
+        .footer-copy {
+            font-size: 12px;
+            opacity: 0.7;
+        }
 
 /* Media Queries */
 @media screen and (max-width: 1200px) {
@@ -283,6 +364,30 @@ p {
         padding: 12px 25px;
         font-size: 16px;
     }
+
+    .modal-content {
+        width: 80%;
+        max-width: 600px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (max-width: 853px) {
+    .modal-content {
+        width: 85%;
+        max-width: 550px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .modal-image {
+        max-height: 75vh;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -307,40 +412,75 @@ p {
         font-size: 20px;
     }
 
-    nav ul li {
-        margin: 0 5px;
+    .features {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    nav ul li a {
-        font-size: 14px;
+    .modal-content {
+        width: 90%;
+        max-width: 500px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
     }
 
-    header .logo img {
-        width: 60px;
+    .modal-image {
+        max-height: 70vh;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .nav-button {
+        padding: 8px;
     }
 }
 
 @media screen and (max-width: 430px) {
     .features {
-        grid-template-columns: 1fr; /* 1 columna en vez de 4 */
+        grid-template-columns: 1fr;
         gap: 10px;
     }
 
     .feature-badge {
-        padding: 15px; /* Reducir padding para mayor espacio */
+        padding: 15px;
     }
 
     .feature-badge i {
-        font-size: 20px; /* Ajustar tamaño de los íconos */
+        font-size: 20px;
     }
 
     .feature-badge h3 {
-        font-size: 16px; /* Ajustar tamaño del texto */
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 360px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 8px;
+    }
+
+    .modal-image {
+        max-height: 55vh;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .nav-button {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .image-counter {
+        font-size: 14px;
     }
 }
 
-
-        
     </style>
 </head>
 <body>
@@ -358,7 +498,8 @@ p {
             </a>
         </div>
     </div>
-    
+
+    <!-- Banner -->
     <section id="inicio" class="banner">
         <div class="logo-container">
             <img src="GV2.png" alt="Gorritas Virales Logo" class="logo" />
@@ -369,7 +510,6 @@ p {
             <a href="#productos" class="cta-button">Ver Diseños</a>
         </div>
     </section>
-    
 
     <!-- Badges de características -->
     <div class="features">
@@ -397,10 +537,26 @@ p {
         <p>Somos una distribuidora mexicana dedicada a ofrecer las mejores cachuchas urbanas. Con envíos rápidos y gratuitos, ofrecemos productos de alta calidad para todo público.</p>
     </section>
 
+    <!-- Sección Productos -->
     <section id="productos">
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="categorias-grid"></div>
     </section>
+
+    <!-- Modal de Galería -->
+    <div class="modal-gallery" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <button class="nav-button prev-button">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img src="" alt="" class="modal-image">
+            <button class="nav-button next-button">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="image-counter">1 / 1</div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -421,54 +577,111 @@ p {
             let currentIndex = 0;
             const container = document.getElementById(containerId);
             const imagesDiv = container.querySelector('.carousel-images');
-
+    
             // Función para cambiar la imagen
             function showNextImage() {
                 currentIndex = (currentIndex + 1) % images.length;
                 imagesDiv.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
-
+    
             // Iniciar el carrusel automático
             setInterval(showNextImage, 3000);
         }
-
+    
+        // Variables para la galería modal
+        let currentGalleryIndex = 0;
+        let currentGalleryImages = [];
+        const modal = document.getElementById('imageModal');
+        const modalImage = modal.querySelector('.modal-image');
+        const closeButton = modal.querySelector('.close-modal');
+        const prevButton = modal.querySelector('.prev-button');
+        const nextButton = modal.querySelector('.next-button');
+        const imageCounter = modal.querySelector('.image-counter');
+    
+        // Función para abrir la galería
+        function openGallery(images, startIndex = 0) {
+            currentGalleryImages = images;
+            currentGalleryIndex = startIndex;
+            modal.style.display = 'block';
+            updateGalleryImage();
+        }
+    
+        // Función para actualizar la imagen mostrada
+        function updateGalleryImage() {
+            modalImage.src = currentGalleryImages[currentGalleryIndex];
+            imageCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+        }
+    
+        // Eventos para los botones de navegación
+        prevButton.addEventListener('click', () => {
+            currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateGalleryImage();
+        });
+    
+        nextButton.addEventListener('click', () => {
+            currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+            updateGalleryImage();
+        });
+    
+        // Cerrar el modal
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    
+        // Cerrar con la tecla Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            } else if (e.key === 'ArrowLeft') {
+                prevButton.click();
+            } else if (e.key === 'ArrowRight') {
+                nextButton.click();
+            }
+        });
+    
         // Cargar el archivo JSON con las carpetas e imágenes
         fetch('src/imagenes.json')
             .then(response => response.json())
             .then(data => {
                 const categoriasGrid = document.querySelector('.categorias-grid');
                 let carouselId = 0;
-
-                // Crear una tarjeta para cada categoría
+    
                 for (const folder in data) {
                     const categoriaCard = document.createElement('div');
                     categoriaCard.classList.add('categoria-card');
-
+    
                     const titulo = document.createElement('h3');
                     titulo.classList.add('categoria-titulo');
                     titulo.textContent = folder;
-
+    
                     const carouselContainer = document.createElement('div');
                     carouselContainer.classList.add('carousel-container');
                     carouselContainer.id = `carousel-${carouselId}`;
-
+    
                     const carouselImages = document.createElement('div');
                     carouselImages.classList.add('carousel-images');
-
+    
+                    // Crear array de rutas de imágenes completas
+                    const fullImagePaths = data[folder].map(image => 'src/' + folder + '/' + image);
+    
                     // Agregar imágenes al carrusel
-                    data[folder].forEach(image => {
+                    fullImagePaths.forEach(imagePath => {
                         const img = document.createElement('img');
-                        img.src = 'src/' + folder + '/' + image;
+                        img.src = imagePath;
                         img.alt = folder;
                         carouselImages.appendChild(img);
                     });
-
+    
+                    // Agregar evento click a la tarjeta
+                    categoriaCard.addEventListener('click', () => {
+                        openGallery(fullImagePaths);
+                    });
+    
                     carouselContainer.appendChild(carouselImages);
                     categoriaCard.appendChild(titulo);
                     categoriaCard.appendChild(carouselContainer);
                     categoriasGrid.appendChild(categoriaCard);
-
-                    // Iniciar el carrusel para esta categoría
+    
                     createCarousel(data[folder], `carousel-${carouselId}`);
                     carouselId++;
                 }
