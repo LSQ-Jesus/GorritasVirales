@@ -190,7 +190,7 @@
 
         .carousel-images {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 1s ease-in-out;
             height: 100%;
         }
 
@@ -591,133 +591,203 @@
     </footer>
     
     <script>
+        // Array con las rutas de tus audios
+        const audios = [
+            'src/audios/1.mp3', 
+            'src/audios/2.mp3', 
+            'src/audios/3.mp3',
+            'src/audios/4.mp3', 
+            'src/audios/5.mp3', 
+            'src/audios/6.mp3',
+            'src/audios/7.mp3'
+        ];
+    
+        let currentAudioIndex = 0; // Índice de la canción actual
+        let currentAudio = null; // Objeto de audio actual
+    
+        // Función para seleccionar una canción aleatoria y reproducirla
+        function playRandomAudio() {
+            // Seleccionar un índice aleatorio del array de audios
+            currentAudioIndex = Math.floor(Math.random() * audios.length);
+            
+            // Detener la canción actual si está reproduciéndose
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0; // Reiniciar al inicio
+            }
+    
+            // Crear un nuevo objeto de audio con la canción correspondiente
+            currentAudio = new Audio(audios[currentAudioIndex]);
+    
+            // Configurar el volumen bajo
+            currentAudio.volume = 0.01; 
+    
+            // Reproducir el audio
+            currentAudio.play().catch(error => {
+                console.log("Error al reproducir el audio: " + error);
+            });
+    
+            // Configurar un evento para que se pase a la siguiente canción al terminar
+            currentAudio.addEventListener('ended', playNextAudio);
+        }
+    
+        // Función para pasar a la siguiente canción al terminar la actual
+        function playNextAudio() {
+            // Incrementar el índice de la canción (y volver a 0 si es el final del arreglo)
+            currentAudioIndex = (currentAudioIndex + 1) % audios.length;
+            
+            // Crear un nuevo objeto de audio con la canción correspondiente
+            currentAudio = new Audio(audios[currentAudioIndex]);
+    
+            // Configurar el volumen bajo
+            currentAudio.volume = 0.015;
+    
+            // Reproducir el siguiente audio
+            currentAudio.play().catch(error => {
+                console.log("Error al reproducir el audio: " + error);
+            });
+    
+            // Configurar un evento para que se pase a la siguiente canción al terminar
+            currentAudio.addEventListener('ended', playNextAudio);
+        }
+    
+        // Función para iniciar la reproducción de la música
+        function startMusic() {
+            playRandomAudio();
+        }
+    
+        // Llamar a la función de inicio de música
+        startMusic();
+    
         // Función para crear el carrusel automático
         function createCarousel(images, containerId) {
             let currentIndex = 0;
             const container = document.getElementById(containerId);
             const imagesDiv = container.querySelector('.carousel-images');
-    
+        
             // Función para cambiar la imagen
             function showNextImage() {
                 currentIndex = (currentIndex + 1) % images.length;
                 imagesDiv.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
-    
+        
             // Iniciar el carrusel automático
             setInterval(showNextImage, 3000);
         }
     
         // Variables para la galería modal
-let currentGalleryIndex = 0;
-let currentGalleryImages = [];
-const modal = document.getElementById('imageModal');
-const modalImage = modal.querySelector('.modal-image');
-const closeButton = modal.querySelector('.close-modal');
-const prevButton = modal.querySelector('.prev-button');
-const nextButton = modal.querySelector('.next-button');
-const imageCounter = modal.querySelector('.image-counter');
-
-// Función para abrir la galería
-function openGallery(images, startIndex = 0) {
-    currentGalleryImages = images;
-    currentGalleryIndex = startIndex;
-    modal.style.display = 'flex';
-    updateGalleryImage();
-}
-
-// Función para actualizar la imagen mostrada
-function updateGalleryImage() {
-    modalImage.src = currentGalleryImages[currentGalleryIndex];
-    imageCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
-}
-
-// Eventos para los botones de navegación
-prevButton.addEventListener('click', () => {
-    currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-    updateGalleryImage();
-});
-
-nextButton.addEventListener('click', () => {
-    currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
-    updateGalleryImage();
-});
-
-// Cerrar el modal con el botón de cierre (X)
-closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-// Cerrar con la tecla Escape
-window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        modal.style.display = 'none';
-    } else if (e.key === 'ArrowLeft') {
-        prevButton.click();
-    } else if (e.key === 'ArrowRight') {
-        nextButton.click();
-    }
-});
-
-// Cerrar la galería al hacer clic fuera de la imagen (en escritorio)
-modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-// Evitar que el modal se cierre si se hace clic en la imagen
-modalImage.addEventListener('click', (event) => {
-    event.stopPropagation(); // Previene que el clic cierre el modal
-});
-
-// Aquí puedes cargar las imágenes desde tu JSON o base de datos
-fetch('src/imagenes.json')
-    .then(response => response.json())
-    .then(data => {
-        const categoriasGrid = document.querySelector('.categorias-grid');
-        let carouselId = 0;
-
-        for (const folder in data) {
-            const categoriaCard = document.createElement('div');
-            categoriaCard.classList.add('categoria-card');
-
-            const titulo = document.createElement('h3');
-            titulo.classList.add('categoria-titulo');
-            titulo.textContent = folder;
-
-            const carouselContainer = document.createElement('div');
-            carouselContainer.classList.add('carousel-container');
-            carouselContainer.id = `carousel-${carouselId}`;
-
-            const carouselImages = document.createElement('div');
-            carouselImages.classList.add('carousel-images');
-
-            // Crear array de rutas de imágenes completas
-            const fullImagePaths = data[folder].map(image => 'src/' + folder + '/' + image);
-
-            // Agregar imágenes al carrusel
-            fullImagePaths.forEach(imagePath => {
-                const img = document.createElement('img');
-                img.src = imagePath;
-                img.alt = folder;
-                carouselImages.appendChild(img);
-            });
-
-            // Agregar evento click a la tarjeta
-            categoriaCard.addEventListener('click', () => {
-                openGallery(fullImagePaths);
-            });
-
-            carouselContainer.appendChild(carouselImages);
-            categoriaCard.appendChild(titulo);
-            categoriaCard.appendChild(carouselContainer);
-            categoriasGrid.appendChild(categoriaCard);
-
-            createCarousel(data[folder], `carousel-${carouselId}`);
-            carouselId++;
+        let currentGalleryIndex = 0;
+        let currentGalleryImages = [];
+        const modal = document.getElementById('imageModal');
+        const modalImage = modal.querySelector('.modal-image');
+        const closeButton = modal.querySelector('.close-modal');
+        const prevButton = modal.querySelector('.prev-button');
+        const nextButton = modal.querySelector('.next-button');
+        const imageCounter = modal.querySelector('.image-counter');
+    
+        // Función para abrir la galería
+        function openGallery(images, startIndex = 0) {
+            currentGalleryImages = images;
+            currentGalleryIndex = startIndex;
+            modal.style.display = 'flex';
+            updateGalleryImage();
         }
-    })
-    .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    
+        // Función para actualizar la imagen mostrada
+        function updateGalleryImage() {
+            modalImage.src = currentGalleryImages[currentGalleryIndex];
+            imageCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+        }
+    
+        // Eventos para los botones de navegación
+        prevButton.addEventListener('click', () => {
+            currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateGalleryImage();
+        });
+    
+        nextButton.addEventListener('click', () => {
+            currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+            updateGalleryImage();
+        });
+    
+        // Cerrar el modal con el botón de cierre (X)
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    
+        // Cerrar con la tecla Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            } else if (e.key === 'ArrowLeft') {
+                prevButton.click();
+            } else if (e.key === 'ArrowRight') {
+                nextButton.click();
+            }
+        });
+    
+        // Cerrar la galería al hacer clic fuera de la imagen (en escritorio)
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    
+        // Evitar que el modal se cierre si se hace clic en la imagen
+        modalImage.addEventListener('click', (event) => {
+            event.stopPropagation(); // Previene que el clic cierre el modal
+        });
+    
+        // Aquí puedes cargar las imágenes desde tu JSON o base de datos
+        fetch('src/imagenes.json')
+            .then(response => response.json())
+            .then(data => {
+                const categoriasGrid = document.querySelector('.categorias-grid');
+                let carouselId = 0;
+    
+                for (const folder in data) {
+                    const categoriaCard = document.createElement('div');
+                    categoriaCard.classList.add('categoria-card');
+    
+                    const titulo = document.createElement('h3');
+                    titulo.classList.add('categoria-titulo');
+                    titulo.textContent = folder;
+    
+                    const carouselContainer = document.createElement('div');
+                    carouselContainer.classList.add('carousel-container');
+                    carouselContainer.id = `carousel-${carouselId}`;
+    
+                    const carouselImages = document.createElement('div');
+                    carouselImages.classList.add('carousel-images');
+    
+                    // Crear array de rutas de imágenes completas
+                    const fullImagePaths = data[folder].map(image => 'src/' + folder + '/' + image);
+    
+                    // Agregar imágenes al carrusel
+                    fullImagePaths.forEach(imagePath => {
+                        const img = document.createElement('img');
+                        img.src = imagePath;
+                        img.alt = folder;
+                        carouselImages.appendChild(img);
+                    });
+    
+                    // Agregar evento click a la tarjeta
+                    categoriaCard.addEventListener('click', () => {
+                        openGallery(fullImagePaths);
+                    });
+    
+                    carouselContainer.appendChild(carouselImages);
+                    categoriaCard.appendChild(titulo);
+                    categoriaCard.appendChild(carouselContainer);
+                    categoriasGrid.appendChild(categoriaCard);
+    
+                    createCarousel(data[folder], `carousel-${carouselId}`);
+                    carouselId++;
+                }
+            })
+            .catch(error => console.error('Error al cargar el archivo JSON:', error));
     </script>
+    
+    
 </body>
 </html>
